@@ -1,0 +1,23 @@
+{
+  "name": "capacint",
+  "version": "1.0.0",
+  "description": "A website to convert pixelart (principally) into SVG iamges.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Betelgeuse1/capacint.git"
+  },
+  "author": "Medhi Chivaley & Thomas Teixeira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Betelgeuse1/capacint/issues"
+  },
+  "homepage": "https://github.com/Betelgeuse1/capacint#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hyperapp": "^2.0.12"
+  }
+}
