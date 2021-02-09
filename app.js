@@ -66,18 +66,22 @@ const show_files_table = props => {
             ])),
             h('tbody', {}, props.files.map(file_row))
         ]),
+        h('a', { href: '/', class: ['button', 'button-outline'] }, text('Reset'))
     ])
 }
 
 // View
-export const view = state => h('main', {}, [
-    h('div', {}, [
-        h('a', {}, h('h1', {}, text('Capacint'))),
+export const view = state => h('div', {}, [
+    h('header', {}, [
+        h('h1', {}, text('Capacint')),
         h('h4', {}, text('A tool to convert images into svg.'))
     ]),
-    state.files.length === 0 
+    h('main', {}, state.files.length === 0 
         ? upload_form()
         : show_files_table(state),
+    ),
+    // TODO: Add copyrights shit and social + github links
+    h('footer', {})
 ])
 
 app({
