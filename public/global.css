@@ -1,0 +1,32 @@
+/* Color changing and display management */
+
+:root {
+    --primary: #61A0AF;
+    --secondary: #BAACBD;
+}
+
+/* ----------- COLOR ----------- */
+a {
+    color: var(--primary);
+}
+a:focus, a:hover {
+    color: var(--secondary);
+}
+
+button, .button {
+    border-color: var(--primary) !important;
+    background-color: var(--primary) !important;
+}
+button:hover, .button:hover {
+    border-color: var(--secondary) !important;
+    background-color: var(--secondary) !important;
+}
+.button-outline {
+    background-color: transparent !important;
+    color: var(--primary) !important;
+}
+.button-outline:hover {
+    background-color: transparent !important;
+    color: var(--secondary) !important;
+}
+/* ----------- DISPLAY ----------- */

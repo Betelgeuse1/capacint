@@ -14,6 +14,7 @@ app.post('/upload', async (req, res, next) => {
     const svg_dir = `public/svgs/${id}`
 
     try {
+        // MAYBE: change all the nanoid + tmp_dir nonsense to mkdtemp
         const tmp_dir = `${svg_dir}/tmp`
         await fs.mkdir(tmp_dir, { recursive: true })
 
@@ -21,7 +22,7 @@ app.post('/upload', async (req, res, next) => {
             multiples: true,
             uploadDir: tmp_dir
         })
-
+        // Managing the unique file issue        
         if (!Array.isArray(files)) files = [files]
 
         files = files.map((file) => ({

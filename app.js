@@ -58,7 +58,11 @@ const file_row = ({ name, link }) => {
 
 const show_files_table = props => {
     return h('div', {}, [
-        h('a', {class: 'button', href: props.archive}, text('Download all')),
+        h('div', {}, [
+            h('a', {class: 'button', href: props.archive}, text('Download all')),,
+            // TODO: Use a real button tag with action emptying files array
+            h('a', { href: '/', class: ['button', 'button-outline'] }, text('Reset'))
+        ]),
         h('table', {}, [
             h('thead', {}, h('tr', {}, [
                 h('th', {}, text('Name')),
@@ -66,7 +70,6 @@ const show_files_table = props => {
             ])),
             h('tbody', {}, props.files.map(file_row))
         ]),
-        h('a', { href: '/', class: ['button', 'button-outline'] }, text('Reset'))
     ])
 }
 
