@@ -34,16 +34,14 @@ const upload_files = (state, event) => {
     ]
 }
 
-const request_change_state = (state, props) => {
-    return { ...state, ...props }
-}
+const request_change_state = (state, props) => ({ ...state, ...props })
 
 // View's Parts
 const upload_form = () => {
     return h('form', { onsubmit: upload_files, action: 'upload', method: 'POST' }, [
         h('input', { type: 'file', name: 'files', multiple: true }),
         h('br', {}),
-        h('button', { type: 'submit' }, text('UPLOAD'))
+        h('button', { type: 'submit' }, text('CONVERT'))
     ])
 }
 
@@ -60,7 +58,7 @@ const show_files_table = props => {
     return h('div', {}, [
         h('div', {}, [
             h('a', {class: 'button', href: props.archive}, text('Download all')),,
-            // TODO: Use a real button tag with action emptying files array
+            // Don't need to reset the state coz reloading the page will reset for us.
             h('a', { href: '/', class: ['button', 'button-outline'] }, text('Reset'))
         ]),
         h('table', {}, [
@@ -83,7 +81,7 @@ export const view = state => h('div', {}, [
         ? upload_form()
         : show_files_table(state),
     ),
-    // TODO: Add copyrights shit and social + github links
+    // TODO: Add copyrights stuff and social + github links
     h('footer', {})
 ])
 

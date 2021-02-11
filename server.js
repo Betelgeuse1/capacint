@@ -31,11 +31,11 @@ app.post('/upload', async (req, res, next) => {
             name: `${file.name.substring(0, file.name.lastIndexOf('.'))}.svg`
         }))
 
-        for (let i = 0; i < files.length; i++) {
+        for (const file of files) {
             // The converting linux command uses convert (ImageMagik) and autotrace
             // The 000001 color is just a magic number for background transparency
             // TODO: Creer un script custom pour convertir les images en utilisant les ressources suivantes : ppmcolormask | potrace | mkbitmap | tool to read all the colors from an image
-            await exec_promise(`convert -background '#000001' -alpha background ${tmp_dir}/${files[i].pathname} ${tmp_dir}/out.ppm && autotrace --output-format svg --output-file ${svg_dir}/${files[i].name} --background-color 000001 ${tmp_dir}/out.ppm`)
+            await exec_promise(`convert -background '#000001' -alpha background ${tmp_dir}/${file.pathname} ${tmp_dir}/out.ppm && autotrace --output-format svg --output-file ${svg_dir}/${file.name} --background-color 000001 ${tmp_dir}/out.ppm`)
         }
 
         // Putting all the files into a zip archive.
