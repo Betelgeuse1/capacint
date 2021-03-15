@@ -1,5 +1,6 @@
 import 'milligram'
 import { h, text, app } from 'hyperapp'
+// MAYBE: use the @hyperapp/html module instead of only h function
 
 // Events
 const form_request = (dispatch, props) => {
@@ -20,18 +21,14 @@ const request = infos => [infos.action, infos.props]
 const upload_files = (state, event) => {
     event.preventDefault()
     return [
-        {
-            ...state,
-            // TODO: Mettre un truc pour dire qu'on est entrain de convertir les images
-            fetching: true
-        },
+        state,
         request({
             props: {
                 form: event.target
             },
             action: form_request
         })
-    ]
+    ] // Same thing as [state, [form_request, { props_obkect }]]
 }
 
 const request_change_state = (state, props) => ({ ...state, ...props })
@@ -81,7 +78,7 @@ export const view = state => h('div', {}, [
         ? upload_form()
         : show_files_table(state),
     ),
-    // TODO: Add copyrights stuff and social + github links
+    // TODO: Add licence's stuff + social + github
     h('footer', {})
 ])
 
